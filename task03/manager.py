@@ -8,31 +8,32 @@ from laptop import Laptop
 
 
 class Manager:
-
+    @staticmethod
     def summ_price(laptops):
         if isinstance(laptops, (list, tuple)):
-            return Laptop()
+            summ = 0
+            for laptop in laptops:
+                if isinstance(laptop, Laptop):
+                    summ += laptop.price
+            return summ
 
-        summ = 0
-        for laptop in laptops:
-            if isinstance(laptop, Laptop):
-                summ += laptop.__price
-        return summ
-
+    @staticmethod
     def find_max_price(laptops):
-        max_value = laptop.__price[0]
+        if isinstance(laptops, (list, tuple)):
+            max_value = 300
+            for laptop in laptops:
+                if max_value < laptop.price:
+                    max_value = laptop.price
 
-        for laptop.__price in laptops:
-            if max_value < laptop.__price:
-                max_value = laptop.__price
+            return max_value
 
-        return max_value
-
+    @staticmethod
     def find_min_price(laptops):
-        min_value = laptop.__price[0]
+        if isinstance(laptops, (list, tuple)):
+            min_value = 2000
+            for laptop in laptops:
+                if min_value > laptop.price:
+                    min_value = laptop.price
 
-        for laptop.__price in laptops:
-            if min_value < laptop.__price:
-                min_value = laptop.__price
+            return min_value
 
-        return min_value
